@@ -1,4 +1,4 @@
-# README
+# KantMap
 
 This repository contains both the front-end and back-end codes for a website. 
 
