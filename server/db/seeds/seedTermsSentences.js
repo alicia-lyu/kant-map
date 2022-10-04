@@ -20,6 +20,7 @@ const seedTermsSentences = async () => {
                 if (error) return handleError(error);
                 for (let sentence of sentList) {
                     let sentenceDocument = new Sentence({
+                        _id: new mongoose.Types.ObjectId(),
                         text: sentence,
                         term: termDocument._id
                     });
@@ -48,7 +49,7 @@ const main = async () => {
 }
 
 main().then(() => {
-    mongoose.disconnect();
+    // mongoose.disconnect();
 })
 
 

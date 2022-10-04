@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const SentenceSchema = new Schema ({
     _id: Schema.Types.ObjectId,
     text: String,
-    term: { type: Schema.Types.ObjectId, ref: 'terms'}
+    term: { type: Schema.Types.ObjectId, ref: 'terms'},
+    public: { type: Boolean, default: true }
 });
 
 module.exports = mongoose.model('Sentence', SentenceSchema);
