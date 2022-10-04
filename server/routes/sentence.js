@@ -1,9 +1,10 @@
 // prerequisites
+const express = require("express");
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 const sentenceRoutes = express.Router();
 const Sentence = require('../db/models/Sentence')
 const Term = require('../db/models/Term')
-const connectMongoose = require('../db/conn')
-connectMongoose();
 
 // routes
 sentenceRoutes.route('/:termName/sentences').get(async (req, res) => {
@@ -35,12 +36,13 @@ sentenceRoutes.route('/:termName/:sentenceId').get(async (req, res) => {
     }
 })
 
-sentenceRoutes.route('/:termName/add-sentence').get(async (req, res) => {
+sentenceRoutes.route('/:termName/add-sentence').post(async (req, res) => {
     const text = req.body.text;
     const termName = req.params.termName;
     try {
         const term = await Term.findOne({name: termName});
         const sentenceDocument = new Sentence({
+            _id: new Schema.Types.ObjectId(),
             text,
             term: term._id,
             public: false
@@ -54,4 +56,4 @@ sentenceRoutes.route('/:termName/add-sentence').get(async (req, res) => {
     }
 })
     
-module.exports = termRoutes;
+module.exports = sentenceRoutes;

@@ -1,9 +1,7 @@
 // prerequisites
-const app = require('./routerApp')
+const express = require("express");
 const termRoutes = express.Router();
 const Term = require('../db/models/Term')
-const connectMongoose = require('../db/conn')
-connectMongoose();
 
 // routes
 termRoutes.route('/terms').get((req, res) => {
