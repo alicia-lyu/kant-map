@@ -14,9 +14,9 @@ termRoutes.route('/terms').get((req, res) => {
     })
 })
 
-termRoutes.route('/term/:id').get((req, res) => {
-   const id = req.params.id;
-   Term.findById(id, (err, result) => {
+termRoutes.route('/term/:termName').get((req, res) => {
+   const termName = req.params.termName; // string manipulation needed?
+   Term.findOne({name: termName}, (err, result) => {
       if (err) {
          res.send(err);
        } else {

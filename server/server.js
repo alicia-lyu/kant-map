@@ -1,4 +1,6 @@
 require("dotenv").config({ path: "./config.env" });
+const port = process.env.PORT || 8080;
+
 const express = require("express");
 const app = express();
 
@@ -33,8 +35,6 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error');
     next();
 })
-
-const port = process.env.PORT || 8080;
 
 // routes
 const termRoutes = require('./routes/term')
