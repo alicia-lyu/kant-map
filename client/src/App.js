@@ -16,7 +16,7 @@ import {UserMenu, LogInPrompt, UserMenu} from "./components/UserItemInNav";
 function App() {
 
   // how to toggle between logged-in and logged-out states?
-  const UserMenu = (
+  const NavRight = (
     <Switch>
       <Route element={<UserMenu />} /> 
       <Route element={<LogInPrompt />} /> 
@@ -45,7 +45,7 @@ function App() {
                 Posts
               </Link>
             </Nav.Item>
-            <UserMenu />
+            <NavRight />
           </Nav>
         </Navbar.Collapse>
       </Container>
