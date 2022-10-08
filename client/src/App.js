@@ -1,7 +1,7 @@
 import React from "react";
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
   Link
 } from "react-router-dom";
@@ -11,16 +11,16 @@ import Navbar from 'react-bootstrap/Navbar';
 import './App.scss';
 
 // import Components
-import {UserMenu, LogInPrompt, UserMenu} from "./components/UserItemInNav";
+import {UserMenu, LogInPrompt} from "./components/UserItemInNav";
 
 function App() {
 
   // how to toggle between logged-in and logged-out states?
   const NavRight = (
-    <Switch>
+    <Routes>
       <Route element={<UserMenu />} /> 
       <Route element={<LogInPrompt />} /> 
-    </Switch>
+    </Routes>
   )
 // routes in the back-end to be added
   const NavbarWithLinks = (
@@ -55,13 +55,13 @@ function App() {
   // work only after importing
   const MainContent = (
     <div className="container mt-3">
-      <Switch>
+      <Routes>
         <Route path="/terms" element={<Terms />} /> 
         <Route path="/term/:termName" element={<Term />} />
         <Route path="/:termName/sentences" element={<Sentences />} />
         <Route path="/:termName/:sentenceId" element={<Sentence />} />
         <Route path="/:termName/add-sentence" element={<AddSentence />} />
-      </Switch>
+      </Routes>
     </div>
   )
 

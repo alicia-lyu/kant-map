@@ -11,7 +11,6 @@ const session = require('express-session');
 const morgan = require('morgan');
 const favicon = require('serve-favicon');
 const methodOverride = require('method-override')
-const flash = require('connect-flash');
 
 // middlewares
 const secret = process.env.SECRET || 'foo';
@@ -28,13 +27,6 @@ app.use(morgan('tiny'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
-app.use(flash());
-app.use((req, res, next) => {
-    console.log(req.session)
-    res.locals.success = req.flash('success');
-    res.locals.error = req.flash('error');
-    next();
-})
 
 // routes
 const termRoutes = require('./routes/term')

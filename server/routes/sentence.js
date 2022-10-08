@@ -60,12 +60,10 @@ sentenceRoutes.route('/:termName/sentences').post(async (req, res) => {
             term: term._id,
             public: false
         });
-        sentenceDocument.save();
-        req.flash('success', 'Sentence added successfully! You can view it while logging into your account.');
-        res.redirect(`/${termName}`)
+        await sentenceDocument.save();
+        res.send('success')
     }    catch (error) {
-        req.flash('error', 'Error occurred while adding a sentence!');
-        res.redirect('/terms')
+        res.send('failure')
     }
 })
 
@@ -76,11 +74,9 @@ sentenceRoutes.route('/:termName/:sentenceId').delete(async (req, res) => {
         const {termDocument, sentenceDocument} = matchTermSent(termName, sentenceId,
             "Sentence delete request is not legitimate. Sentence ID and term name do not match.")
         await sentenceDocument.remove()
-        req.flash('success', 'Sentence deleted successfully!');
-        res.redirect(`/${termName}`)
+        res.send('success')
     }    catch (error) {
-        req.flash('error', error.displayedMessage || 'Error occurred while deleting a sentence!');
-        res.redirect('/terms')
+        res.send('failure')
     }
 })
 
