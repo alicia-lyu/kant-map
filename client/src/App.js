@@ -11,7 +11,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import './App.scss';
 
 // import Components
-import {UserMenu, LogInPrompt} from "./components/UserItemInNav";
+import {UserMenu, LogInPrompt} from "./App.UserItemInNav";
 
 function App() {
 
@@ -52,7 +52,7 @@ function App() {
     </Navbar>
   )
 
-  // work only after importing
+  // more routes to be added
   const MainContent = (
     <div className="container mt-3">
       <Routes>

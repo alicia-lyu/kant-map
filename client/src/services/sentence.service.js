@@ -7,6 +7,9 @@ class SentenceDataService {
     get(termName, sentenceId) {
         return http.get(`/${termName}/${sentenceId}`)
     }
+    adding(termName) {
+        return http.get(`${termName}/add-sentence`)
+    }
     add(termName, data) {
         return http.post(`${termName}/sentences`, data)
     }

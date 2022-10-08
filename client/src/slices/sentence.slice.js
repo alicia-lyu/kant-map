@@ -19,6 +19,14 @@ export const findSentence = createAsyncThunk(
     }
 )
 
+export const addingSentence = createAsyncThunk(
+    'sentence/adding',
+    async ({termName}) => {
+        const res = await SentenceDataService.adding(termName);
+        return res.data
+    }
+)
+
 export const postSentence = createAsyncThunk(
     'sentence/create',
     async ({termName}) => {

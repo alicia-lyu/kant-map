@@ -49,6 +49,17 @@ sentenceRoutes.route('/:termName/:sentenceId').get(async (req, res) => {
     }
 })
 
+sentenceRoutes.route('/:termName/add-sentence').get(async (req, res) => {
+    const termName = req.params.termName;
+    Term.findOne({name: termName}, (err, result) => {
+        if (err) {
+           res.send(err);
+         } else {
+           res.json(result);
+         }
+     })
+})
+
 sentenceRoutes.route('/:termName/sentences').post(async (req, res) => {
     const text = req.body.text;
     const termName = req.params.termName;
@@ -61,9 +72,9 @@ sentenceRoutes.route('/:termName/sentences').post(async (req, res) => {
             public: false
         });
         await sentenceDocument.save();
-        res.send('success')
+        res.send({message:'success'})
     }    catch (error) {
-        res.send('failure')
+        res.send({message:'failure'})
     }
 })
 
@@ -74,9 +85,9 @@ sentenceRoutes.route('/:termName/:sentenceId').delete(async (req, res) => {
         const {termDocument, sentenceDocument} = matchTermSent(termName, sentenceId,
             "Sentence delete request is not legitimate. Sentence ID and term name do not match.")
         await sentenceDocument.remove()
-        res.send('success')
+        res.send({message:'success'})
     }    catch (error) {
-        res.send('failure')
+        res.send({message:'failure'})
     }
 })
 
