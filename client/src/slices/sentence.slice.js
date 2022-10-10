@@ -29,7 +29,7 @@ export const addingSentence = createAsyncThunk(
 
 export const postSentence = createAsyncThunk(
     'sentence/create',
-    async ({termName}) => {
+    async ({termName, data}) => {
         const res = await SentenceDataService.add(termName, data);
         return res.data; // string, ['success', 'failure']
     }
