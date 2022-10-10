@@ -15,14 +15,14 @@ termRoutes.route('/terms').get((req, res) => {
 })
 
 termRoutes.route('/term/:termName').get((req, res) => {
-   const termName = req.params.termName; // string manipulation needed
-   Term.findOne({name: termName}, (err, result) => {
+  const termName = req.params.termName; // string manipulation needed
+  Term.findOne({name: termName}, (err, result) => {
       if (err) {
-         res.send(err);
-       } else {
-         res.json(result);
-       }
-   })
+        res.send(err);
+      } else {
+        res.json(result);
+      }
+  })
 })
 
     

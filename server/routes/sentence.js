@@ -1,7 +1,6 @@
 // prerequisites
 const express = require("express");
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const Mongoose = require('mongoose');
 const sentenceRoutes = express.Router();
 const Sentence = require('../db/models/Sentence')
 const Term = require('../db/models/Term')
@@ -9,12 +8,12 @@ const DisplayedError = require('../scripts/DisplayedError')
 
 const matchTermSent = async (termName, sentenceId, errorMessage) => {
     const findTermSent = async () => {
-        const termDocument = Term.findOne({name: termName});
-        const sentenceDocument = Sentence.findById(sentenceId);
+        const termDocument = await Term.findOne({name: termName});
+        const sentenceDocument = await Sentence.findById(sentenceId);
         return {termDocument, sentenceDocument}
     }
     const {termDocument, sentenceDocument} = await findTermSent();
-    if (sentenceDocument.term !== termDocument._id) {
+    if (sentenceDocument.term.toString() !== termDocument._id.toString()) {
         throw new DisplayedError(errorMessage)
     }
     return {
@@ -31,34 +30,33 @@ sentenceRoutes.route('/:termName/sentences').get(async (req, res) => {
         const sentences = await Sentence.find({term: term._id});
         res.json({term, sentences})
     } catch (error) {
-        req.flash('error', `Error occurred while accessing ${termName}'s sentences!`);
-        res.redirect('/terms')
+        res.send(error)
     }
+})
+
+sentenceRoutes.route('/:termName/add-sentence').get((req, res) => {
+    const termName = req.params.termName; 
+    Term.findOne({name: termName}, (err, result) => {
+       if (err) {
+          res.send(err);
+        } else {
+          res.json(result);
+        }
+    })
 })
 
 sentenceRoutes.route('/:termName/:sentenceId').get(async (req, res) => {
     const termName = req.params.termName;
     const sentenceId = req.params.sentenceId;
     try {
-        const {termDocument, sentenceDocument} = matchTermSent(termName, sentenceId,
+        const {termDocument, sentenceDocument} = await matchTermSent(termName, sentenceId,
             "Sentence request is not legitimate. Sentence ID and term name do not match.")
         res.json({termDocument, sentenceDocument})
     } catch (error) {
-        req.flash('error', error.displayedMessage || `Error occurred while accessing ${termName}'s sentence!`);
-        res.redirect('/terms')
+        res.send(error)
     }
 })
 
-sentenceRoutes.route('/:termName/add-sentence').get(async (req, res) => {
-    const termName = req.params.termName;
-    Term.findOne({name: termName}, (err, result) => {
-        if (err) {
-           res.send(err);
-         } else {
-           res.json(result);
-         }
-     })
-})
 
 sentenceRoutes.route('/:termName/sentences').post(async (req, res) => {
     const text = req.body.text;
@@ -66,7 +64,7 @@ sentenceRoutes.route('/:termName/sentences').post(async (req, res) => {
     try {
         const term = await Term.findOne({name: termName});
         const sentenceDocument = new Sentence({
-            _id: new Schema.Types.ObjectId(),
+            _id: new Mongoose.Types.ObjectId(),
             text,
             term: term._id,
             public: false
@@ -82,7 +80,7 @@ sentenceRoutes.route('/:termName/:sentenceId').delete(async (req, res) => {
     const sentenceId = req.params.sentenceId;
     const termName = req.params.termName;
     try {
-        const {termDocument, sentenceDocument} = matchTermSent(termName, sentenceId,
+        const {termDocument, sentenceDocument} = await matchTermSent(termName, sentenceId,
             "Sentence delete request is not legitimate. Sentence ID and term name do not match.")
         await sentenceDocument.remove()
         res.send({message:'success'})
