@@ -11,7 +11,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import './App.scss';
 
 // import Components
-import { Terms } from './components/Terms'
+import { Terms } from './components/Terms/Terms'
 import {UserMenu, LogInPrompt} from "./App.UserItemInNav";
 
 function App() {

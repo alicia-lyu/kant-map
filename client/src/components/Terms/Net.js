@@ -1,14 +1,14 @@
-import net from '../assets/net.json'
+import net from '../../assets/net.json'
 import * as Echarts from 'echarts'
 import React, {useEffect, useRef} from 'react'
 import './custom.scss'
-import useWindowDimensions from '../utils/useWindowDimensions'
+import useWindowDimensions from '../../utils/useWindowDimensions'
 
 const processNode = (windowWidth) => {
   let subtractee
   let scaler
     if (windowWidth < 768) {
-      subtractee = 2
+      subtractee = 3
       scaler = 2
     } else if (windowWidth < 1200) {
       subtractee = 3
@@ -32,6 +32,7 @@ const processNode = (windowWidth) => {
 export function Net() {
   const chartRef = useRef(null)
   const { windowWidth } = useWindowDimensions();
+  this.handleChartItemClicked = this.props.handleChartItemClicked;
 
   useEffect(() => {
     processNode(windowWidth);
