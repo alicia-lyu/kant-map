@@ -11,20 +11,21 @@ import Navbar from 'react-bootstrap/Navbar';
 import './App.scss';
 
 // import Components
+import { Terms } from './components/Terms'
 import {UserMenu, LogInPrompt} from "./App.UserItemInNav";
 
 function App() {
 
   // how to toggle between logged-in and logged-out states?
-  const NavRight = (
+  const NavRight = () => (
     <Routes>
       <Route element={<UserMenu />} /> 
       <Route element={<LogInPrompt />} /> 
     </Routes>
   )
 // routes in the back-end to be added
-  const NavbarWithLinks = (
-    <Navbar bg="dark" expand="md">
+  const NavbarWithLinks = () => (
+    <Navbar bg="dark" variant="dark" expand="md">
       <Container>
         <Navbar.Brand href="#home">KantMap</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -53,16 +54,12 @@ function App() {
   )
 
   // more routes to be added
-  const MainContent = (
-    <div className="container mt-3">
+  const MainContent = () => (
+    <Container className="mt-3">
       <Routes>
         <Route path="/terms" element={<Terms />} /> 
-        <Route path="/term/:termName" element={<Term />} />
-        <Route path="/:termName/sentences" element={<Sentences />} />
-        <Route path="/:termName/:sentenceId" element={<Sentence />} />
-        <Route path="/:termName/add-sentence" element={<AddSentence />} />
       </Routes>
-    </div>
+    </Container>
   )
 
   return (
