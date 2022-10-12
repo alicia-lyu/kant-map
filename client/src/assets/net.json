@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Begriff",
-      "symbolSize": 7.836,
+      "weight": 7.836,
       "english": "concept",
       "weblink": "https://www.textlog.de/31963.html",
       "Nsentence": 1058,
@@ -13,7 +13,7 @@
     {
       "id": 2,
       "name": "Vernunft",
-      "symbolSize": 7.324,
+      "weight": 7.324,
       "english": "reason",
       "weblink": "https://www.textlog.de/33219.html",
       "Nsentence": 817,
@@ -23,7 +23,7 @@
     {
       "id": 3,
       "name": "Gegenstand",
-      "symbolSize": 7.216,
+      "weight": 7.216,
       "english": "object",
       "weblink": "https://www.textlog.de/32346.html",
       "Nsentence": 745,
@@ -33,7 +33,7 @@
     {
       "id": 4,
       "name": "Erscheinung",
-      "symbolSize": 6.977,
+      "weight": 6.977,
       "english": "appearance",
       "weblink": "https://www.textlog.de/32833.html",
       "Nsentence": 621,
@@ -43,7 +43,7 @@
     {
       "id": 5,
       "name": "Erfahrung",
-      "symbolSize": 6.947,
+      "weight": 6.947,
       "english": "experience",
       "weblink": "https://www.textlog.de/32820.html",
       "Nsentence": 605,
@@ -53,7 +53,7 @@
     {
       "id": 6,
       "name": "Anschauung",
-      "symbolSize": 6.824,
+      "weight": 6.824,
       "english": "intuition",
       "weblink": "https://www.textlog.de/31941.html",
       "Nsentence": 540,
@@ -63,7 +63,7 @@
     {
       "id": 7,
       "name": "Ding",
-      "symbolSize": 6.608,
+      "weight": 6.608,
       "english": "thing",
       "weblink": "https://www.textlog.de/32917.html",
       "Nsentence": 509,
@@ -73,7 +73,7 @@
     {
       "id": 8,
       "name": "Erkenntnis",
-      "symbolSize": 6.588,
+      "weight": 6.588,
       "english": "cognition",
       "weblink": "https://www.textlog.de/32824.html",
       "Nsentence": 497,
@@ -83,7 +83,7 @@
     {
       "id": 9,
       "name": "Idee",
-      "symbolSize": 6.212,
+      "weight": 6.212,
       "english": "idea",
       "weblink": "https://www.textlog.de/32982.html",
       "Nsentence": 384,
@@ -93,7 +93,7 @@
     {
       "id": 10,
       "name": "Einheit",
-      "symbolSize": 6.205,
+      "weight": 6.205,
       "english": "unity",
       "weblink": "https://www.textlog.de/32866.html",
       "Nsentence": 369,
@@ -103,7 +103,7 @@
     {
       "id": 11,
       "name": "Vorstellung",
-      "symbolSize": 6.097,
+      "weight": 6.097,
       "english": "representation",
       "weblink": "https://www.textlog.de/33260.html",
       "Nsentence": 340,
@@ -113,7 +113,7 @@
     {
       "id": 12,
       "name": "Raum",
-      "symbolSize": 6.051,
+      "weight": 6.051,
       "english": "room",
       "weblink": "https://www.textlog.de/33167.html",
       "Nsentence": 310,
@@ -123,7 +123,7 @@
     {
       "id": 13,
       "name": "Ursache",
-      "symbolSize": 5.905,
+      "weight": 5.905,
       "english": "cause",
       "weblink": "https://www.textlog.de/32748.html",
       "Nsentence": 295,
@@ -133,7 +133,7 @@
     {
       "id": 14,
       "name": "Natur",
-      "symbolSize": 5.798,
+      "weight": 5.798,
       "english": "nature",
       "weblink": "https://www.textlog.de/33032.html",
       "Nsentence": 282,
@@ -143,7 +143,7 @@
     {
       "id": 15,
       "name": "Grund",
-      "symbolSize": 5.76,
+      "weight": 5.76,
       "english": "ground",
       "weblink": "https://www.textlog.de/32388.html",
       "Nsentence": 299,
@@ -153,7 +153,7 @@
     {
       "id": 16,
       "name": "Objekt",
-      "symbolSize": 5.641,
+      "weight": 5.641,
       "english": "object",
       "weblink": "https://www.textlog.de/33069.html",
       "Nsentence": 252,
@@ -163,7 +163,7 @@
     {
       "id": 17,
       "name": "Wesen",
-      "symbolSize": 5.633,
+      "weight": 5.633,
       "english": "being; essence",
       "weblink": "https://www.textlog.de/32773.html",
       "Nsentence": 258,
@@ -173,7 +173,7 @@
     {
       "id": 18,
       "name": "Grundsatz",
-      "symbolSize": 5.61,
+      "weight": 5.61,
       "english": "principle",
       "weblink": "https://www.textlog.de/32389.html",
       "Nsentence": 270,
@@ -183,7 +183,7 @@
     {
       "id": 19,
       "name": "Prinzip",
-      "symbolSize": 5.574,
+      "weight": 5.574,
       "english": "principle",
       "weblink": "https://www.textlog.de/33138.html",
       "Nsentence": 264,
@@ -193,7 +193,7 @@
     {
       "id": 20,
       "name": "Synthesis",
-      "symbolSize": 5.487,
+      "weight": 5.487,
       "english": "synthesis",
       "weblink": "https://www.textlog.de/33327.html",
       "Nsentence": 235,
@@ -203,7 +203,7 @@
     {
       "id": 21,
       "name": "Urteil",
-      "symbolSize": 5.479,
+      "weight": 5.479,
       "english": "judgment",
       "weblink": "https://www.textlog.de/32741.html",
       "Nsentence": 213,
@@ -213,7 +213,7 @@
     {
       "id": 22,
       "name": "Gesetz",
-      "symbolSize": 5.445,
+      "weight": 5.445,
       "english": "law",
       "weblink": "https://www.textlog.de/32323.html",
       "Nsentence": 214,
@@ -223,7 +223,7 @@
     {
       "id": 23,
       "name": "Regel",
-      "symbolSize": 5.312,
+      "weight": 5.312,
       "english": "rule",
       "weblink": "https://www.textlog.de/33182.html",
       "Nsentence": 207,
@@ -233,7 +233,7 @@
     {
       "id": 24,
       "name": "Welt",
-      "symbolSize": 5.235,
+      "weight": 5.235,
       "english": "world",
       "weblink": "https://www.textlog.de/32771.html",
       "Nsentence": 188,
@@ -243,7 +243,7 @@
     {
       "id": 25,
       "name": "Sinn",
-      "symbolSize": 5.229,
+      "weight": 5.229,
       "english": "sense",
       "weblink": "https://www.textlog.de/32619.html",
       "Nsentence": 199,
@@ -253,7 +253,7 @@
     {
       "id": 26,
       "name": "Verstand",
-      "symbolSize": 5.208,
+      "weight": 5.208,
       "english": "understanding",
       "weblink": "https://www.textlog.de/33236.html",
       "Nsentence": 197,
@@ -263,7 +263,7 @@
     {
       "id": 27,
       "name": "Form",
-      "symbolSize": 5.184,
+      "weight": 5.184,
       "english": "form",
       "weblink": "https://www.textlog.de/32295.html",
       "Nsentence": 203,
@@ -273,7 +273,7 @@
     {
       "id": 28,
       "name": "Substanz",
-      "symbolSize": 5.175,
+      "weight": 5.175,
       "english": "substance",
       "weblink": "https://www.textlog.de/33324.html",
       "Nsentence": 179,
@@ -283,7 +283,7 @@
     {
       "id": 29,
       "name": "Wahrnehmung",
-      "symbolSize": 5.117,
+      "weight": 5.117,
       "english": "perception",
       "weblink": "https://www.textlog.de/32763.html",
       "Nsentence": 159,
@@ -293,7 +293,7 @@
     {
       "id": 30,
       "name": "Kategorie",
-      "symbolSize": 5.091,
+      "weight": 5.091,
       "english": "category",
       "weblink": "https://www.textlog.de/32942.html",
       "Nsentence": 184,
@@ -303,7 +303,7 @@
     {
       "id": 31,
       "name": "Realität",
-      "symbolSize": 5.089,
+      "weight": 5.089,
       "english": "reality",
       "weblink": "https://www.textlog.de/33171.html",
       "Nsentence": 173,
@@ -313,7 +313,7 @@
     {
       "id": 32,
       "name": "Sinnlichkeit",
-      "symbolSize": 4.875,
+      "weight": 4.875,
       "english": "sensibility",
       "weblink": "https://www.textlog.de/32627.html",
       "Nsentence": 159,
@@ -323,7 +323,7 @@
     {
       "id": 33,
       "name": "Subjekt",
-      "symbolSize": 4.875,
+      "weight": 4.875,
       "english": "subject",
       "weblink": "https://www.textlog.de/32656.html",
       "Nsentence": 150,
@@ -333,7 +333,7 @@
     {
       "id": 34,
       "name": "Dinge an sich selbst",
-      "symbolSize": 6.566,
+      "weight": 6.566,
       "english": "things in themselves",
       "weblink": "https://www.textlog.de/32917.html",
       "Nsentence": 78,
@@ -343,7 +343,7 @@
     {
       "id": 35,
       "name": "Antinomie der reinen Vernunft",
-      "symbolSize": 6.009,
+      "weight": 6.009,
       "english": "antinomies of pure reason",
       "weblink": "https://www.textlog.de/31944.html",
       "Nsentence": 12,
@@ -353,7 +353,7 @@
     {
       "id": 36,
       "name": "Begriffe a priori",
-      "symbolSize": 5.739,
+      "weight": 5.739,
       "english": "concepts a priori",
       "weblink": "https://www.textlog.de/31963.html",
       "Nsentence": 41,
@@ -363,7 +363,7 @@
     {
       "id": 37,
       "name": "Grundsätze des reinen Verstandes",
-      "symbolSize": 5.575,
+      "weight": 5.575,
       "english": "principles of pure reason",
       "weblink": "https://www.textlog.de/32391.html",
       "Nsentence": 17,
@@ -373,7 +373,7 @@
     {
       "id": 38,
       "name": "Erkenntnis a priori",
-      "symbolSize": 5.136,
+      "weight": 5.136,
       "english": "cognition a priori",
       "weblink": "https://www.textlog.de/32825.html",
       "Nsentence": 69,
@@ -383,7 +383,7 @@
     {
       "id": 39,
       "name": "Kritik der reinen Vernunft",
-      "symbolSize": 5.088,
+      "weight": 5.088,
       "english": "critique of pure reason",
       "weblink": "https://www.textlog.de/32971.html",
       "Nsentence": 10,
@@ -393,7 +393,7 @@
     {
       "id": 40,
       "name": "Prinzip der systematischen Einheit",
-      "symbolSize": 4.984,
+      "weight": 4.984,
       "english": "principle of systematic unity",
       "weblink": "https://www.textlog.de/33141.html",
       "Nsentence": 10,
@@ -403,7 +403,7 @@
     {
       "id": 41,
       "name": "Gegenstände möglicher Erfahrung",
-      "symbolSize": 4.977,
+      "weight": 4.977,
       "english": "objects of possible experience",
       "weblink": "https://www.textlog.de/32346.html",
       "Nsentence": 7,
@@ -413,7 +413,7 @@
     {
       "id": 42,
       "name": "Grenzen möglicher Erfahrung",
-      "symbolSize": 4.884,
+      "weight": 4.884,
       "english": "boundaries of possible experience",
       "weblink": "https://www.textlog.de/32384.html",
       "Nsentence": 9,
@@ -423,7 +423,7 @@
     {
       "id": 43,
       "name": "Bedingungen der sinnlichen Anschauung",
-      "symbolSize": 4.862,
+      "weight": 4.862,
       "english": "conditions of sensible intuition",
       "weblink": "https://www.textlog.de/31941.html",
       "Nsentence": 8,
@@ -433,7 +433,7 @@
     {
       "id": 44,
       "name": "System der reinen Vernunft",
-      "symbolSize": 4.838,
+      "weight": 4.838,
       "english": "system of pure reason",
       "weblink": "https://www.textlog.de/33329.html",
       "Nsentence": 7,

@@ -6,12 +6,12 @@ export class Terms extends React.Component {
         super(props)
     }
 
-    handleChartItemClicked() {
+    // handleChartItemClicked() {
 
-    }
+    // }
 
     render() {
-        return <Net handleChartItemClicked={handleChartItemClicked}/>
+        return <Net />
     }
 }
 
