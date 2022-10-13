@@ -11,7 +11,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import './App.scss';
 
 // import Components
-import { Terms } from './components/Terms/Terms'
+import Home from './components/Home/Home'
+import Terms from "./components/Terms/Terms";
 import Term from './components/Term'
 import { UserMenu, LogInPrompt } from "./App.UserItemInNav";
 
@@ -28,7 +29,11 @@ function App() {
   const NavbarWithLinks = () => (
     <Navbar bg="dark" variant="dark" expand="md">
       <Container>
-        <Navbar.Brand href="#home">KantMap</Navbar.Brand>
+        <Navbar.Brand>
+          <Link to={"/"} className="nav-link">
+            KantMap
+          </Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -58,6 +63,7 @@ function App() {
   const MainContent = () => (
     <Container className="mt-5 pb-5">
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/:termName/sentences" element={<Term />} />
       </Routes>

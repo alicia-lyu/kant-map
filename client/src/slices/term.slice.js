@@ -12,23 +12,12 @@ export const retreiveTerms = createAsyncThunk(
     }
 )
 
-export const findTermByName = createAsyncThunk(
-    'term/findOne',
-    async ({termName}) => {
-        const res = await TermDataService.get(termName);
-        return res.data; // a term document
-    }
-)
-
 const termsSlice = createSlice({
     name: 'term',
     initialState,
     extraReducers: {
         [retreiveTerms.fulfilled]: (state, action) => {
             return [...action.payload]
-        },
-        [findTermByName.fulfilled]: (state, action) => {
-            return [action.payload]
         }
     }
 })

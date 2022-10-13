@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import './custom.scss'
-import useWindowDimensions from '../../utils/useWindowDimensions'
+import useWindowDimensions from '../../hooks/useWindowDimensions'
 import { setRatio } from './setRatio'
 
 export default function NetWrapper(props) {
