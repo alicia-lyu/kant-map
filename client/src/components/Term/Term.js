@@ -1,5 +1,5 @@
 import React from "react";
-import withParams from "../../utils/withParams";
+import withParams from "../../hooks/withParams";
 import sentenceService from "../../services/sentence.service";
 import SentenceCard from "./SentenceCard";
 import TermInfo from "./TermInfo";
@@ -14,7 +14,7 @@ class Term extends React.Component {
         }
     }
 
-    componentDidMount() {
+    componentDidMount() { // connect react-router and axios
         const res = sentenceService.getAll(props.params.termName);
         const termDocument = res.termDocument;
         const sentences = res.sentences;
