@@ -1,3 +1,4 @@
+// This slice is completely unnecessary?
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import TermDataService from '../services/term.service';
 

@@ -12,18 +12,19 @@ import './App.scss';
 
 // import Components
 import { Terms } from './components/Terms/Terms'
-import {UserMenu, LogInPrompt} from "./App.UserItemInNav";
+import Term from './components/Term'
+import { UserMenu, LogInPrompt } from "./App.UserItemInNav";
 
 function App() {
 
   // how to toggle between logged-in and logged-out states?
   const NavRight = () => (
     <Routes>
-      <Route element={<UserMenu />} /> 
-      <Route element={<LogInPrompt />} /> 
+      <Route element={<UserMenu />} />
+      <Route element={<LogInPrompt />} />
     </Routes>
   )
-// routes in the back-end to be added
+  // routes in the back-end to be added
   const NavbarWithLinks = () => (
     <Navbar bg="dark" variant="dark" expand="md">
       <Container>
@@ -57,7 +58,8 @@ function App() {
   const MainContent = () => (
     <Container className="mt-5 pb-5">
       <Routes>
-        <Route path="/terms" element={<Terms />} /> 
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/:termName/sentences" element={<Term />} />
       </Routes>
     </Container>
   )

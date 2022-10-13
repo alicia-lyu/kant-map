@@ -26,9 +26,9 @@ const matchTermSent = async (termName, sentenceId, errorMessage) => {
 sentenceRoutes.route('/:termName/sentences').get(async (req, res) => {
     const termName = req.params.termName;
     try {
-        const term = await Term.findOne({name: termName});
+        const termDocument = await Term.findOne({name: termName});
         const sentences = await Sentence.find({term: term._id});
-        res.json({term, sentences})
+        res.json({termDocument, sentences})
     } catch (error) {
         res.send(error)
     }
