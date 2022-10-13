@@ -6,12 +6,12 @@ export class Terms extends React.Component {
         super(props)
     }
 
-    // handleChartItemClicked() {
-
-    // }
-
     render() {
-        return <Net />
-    }
+        return (
+            <div>
+                <h1 className="text-main">Network of Kantian Terms</h1>
+                <Net />
+            </div>
+        )}
 }
 

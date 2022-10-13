@@ -3,7 +3,7 @@ import './custom.scss'
 import useWindowDimensions from '../../utils/useWindowDimensions'
 import { setRatio } from './setRatio'
 
-export default function NetWrapper() {
+export default function NetWrapper(props) {
     const wrapperRef = useRef(null);
     const { width } = useWindowDimensions();
   
@@ -19,6 +19,8 @@ export default function NetWrapper() {
     })
     
     return (
-      <div ref={wrapperRef} className={`netWrapper ${ratioClassName}`}/>
+      <div ref={wrapperRef} className={`net-wrapper ${ratioClassName}`}>
+        {props.children}
+      </div>
     )
   }

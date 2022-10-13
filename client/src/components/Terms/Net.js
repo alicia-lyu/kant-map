@@ -7,25 +7,24 @@ import { processNode } from './processNode'
 import { configForce } from './configForce'
 import { getOption } from './getOption'
 import NetWrapper from './NetWrapper'
+import { withRouter } from '../../utils/withRouter'
 
-export function Net() {
+function Net(props) {
   const chartRef = useRef(null)
   const { width } = useWindowDimensions();
-  // this.handleChartItemClicked = this.props.handleChartItemClicked;
 
   useEffect(() => {
     const chartDom = chartRef.current;
     const chart = Echarts.init(chartDom);
-    
-    
 
     let net = processNode(width, net_data);
     let { repulsion, gravity } = configForce(width);
     let option = getOption(net, repulsion, gravity)
 
     chart.setOption(option);
-    // chart.setStyle(style)
-    // chart.on('click', (e) => this.handleChartItemClicked(e));
+    chart.on('click', {dataType: 'node'}, (params) => {
+      props.router.navigate(`/term/${params.data.name}`) // string manipulation needed
+    });
 
     const resizeChart = async () => {
       console.log(width)
@@ -49,3 +48,4 @@ export function Net() {
   )
 }
 
+export default withRouter(Net);

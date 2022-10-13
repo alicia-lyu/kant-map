@@ -55,7 +55,7 @@ function App() {
 
   // more routes to be added
   const MainContent = () => (
-    <Container className="mt-3">
+    <Container className="mt-5 pb-5">
       <Routes>
         <Route path="/terms" element={<Terms />} /> 
       </Routes>

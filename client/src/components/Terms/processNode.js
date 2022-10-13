@@ -2,7 +2,7 @@ const showBool = (windowWidth, weight) => {
     if (windowWidth < 768) {
       return weight > 6
     } else if (windowWidth < 1200) {
-      return weight > 5
+      return weight > 5.5
     } else {
       return true
     }
