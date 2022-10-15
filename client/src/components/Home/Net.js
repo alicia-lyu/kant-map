@@ -29,6 +29,7 @@ function Net(props) {
     chart.on('click', {dataType: 'node'}, (params) => {
       const urlEnding = nameToUrl(params.data.name);
       props.router.navigate(`/term/${urlEnding}`);
+      window.location.reload();
     });
 
     const resizeChart = () => {
