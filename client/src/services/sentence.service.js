@@ -1,20 +1,23 @@
-import http from '../http-common'
+import authHttp from './auth/auth-common'
+import http from './http-common'
 
 class SentenceDataService {
-    getAll(termName) {
-        return http.get(`${termName}/sentences`)
-    }
+    // public data
     adding(termName) {
         return http.get(`${termName}/add-sentence`)
     }
+    // private data involved
+    getAll(termName) {
+        return authHttp.get(`${termName}/sentences`)
+    }
     get(termName, sentenceId) {
-        return http.get(`/${termName}/${sentenceId}`)
+        return authHttp.get(`/${termName}/${sentenceId}`)
     }
     add(termName, data) {
-        return http.post(`${termName}/sentences`, data)
+        return authHttp.post(`${termName}/sentences`, data)
     }
     delete(termName, sentenceId) {
-        return http.delete(`/${termName}/${sentenceId}`)
+        return authHttp.delete(`/${termName}/${sentenceId}`)
     }
 }
 
