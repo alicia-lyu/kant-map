@@ -14,6 +14,7 @@ import './App.scss';
 import Home from './components/Home/Home'
 import Terms from "./components/Terms/Terms";
 import Term from './components/Term'
+import AddSentence from "./components/AddSentence/AddSentence";
 import { UserMenu, LogInPrompt } from "./App.UserItemInNav";
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/:termName/sentences" element={<Term />} />
+        <Route path="/:termName/add-sentence" element={<AddSentence />} />
       </Routes>
     </Container>
   )

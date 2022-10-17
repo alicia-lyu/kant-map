@@ -1,5 +1,6 @@
 import findCategory from "../../utils/findCategory"
-import colorBadge from "./colorBadge"
+import colorBadge from "../Term/colorBadge"
+import { Link } from "react-router-dom"
 
 export default function TermInfo(props) {
     const term = props.term
@@ -13,7 +14,7 @@ export default function TermInfo(props) {
                 <span className={`badge ${badgeClass}`}>{categoryName}</span>
             </h1>
             <a href={webLink}>Definition and Explanation on textlog.de</a>
+            <Link to={`${name}/add-sentence`} className="btn btn-dark" >Add a new sentence</Link>
         </div>
     )
-
 }
