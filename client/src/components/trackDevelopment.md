@@ -18,6 +18,8 @@ Sentence.js (authorized post)
 
 Terms
 
+Profile
+
 ## Marginal Components
 
 List.js

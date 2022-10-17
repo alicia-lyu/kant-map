@@ -1,36 +1,35 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { Navigate } from 'react-router-dom';
-import * as Yup from "yup";
 import Card from 'react-bootstrap/Card'
 
-import { login } from "../../slices/auth.slice";
+import { signup } from "../../slices/auth.slice";
 import { clearMessage } from "../../slices/message.slice";
 
 import withRouter from '../../hooks/withRouter'
 
-import FormikForm from "./FormikForm";
+import FormikForm from "./FormikForm.js";
 import DisplayMessage from "../common/DisplayMessage";
+import validationSchema from "./validationSchema";
 
-class Login extends React.Component {
+class Signup extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             loading: false
         }
-        this.handleLogin = this.handleLogin.bind(this)
+        this.handleSignup = this.handleSignup.bind(this)
     }
 
     componentDidMount() {
         this.props.clearMessage();
     }
 
-    handleLogin(formValue) {
-        const { username, password } = formValue;
+    handleSignup(formValue) {
+        const { username, password, email } = formValue;
         this.setState({ loading: true });
-        this.props.login(username, password)
+        this.props.signup(username, password, email)
             .unwrap().then(() => {
-                this.props.navigate('/profile')
+                this.props.navigate('/auth/login')
                 window.location.reload();
             }).catch(() => {
                 this.setState({ loading: false });
@@ -38,26 +37,17 @@ class Login extends React.Component {
     }
 
     render() {
-        if (this.props.isLoggedIn === true) {
-            return <Navigate to="/profile" />;
-        }
-
-        const initialValues = { username: "", password: "" }
-        const validationSchema = Yup.object().shape({
-            username: Yup.string().required("This field is required!"),
-            password: Yup.string().required("This field is required!"),
-        });
-
+        const initialValues = { username: "", password: "", email: "" }
 
         return (
             <div>
                 <Card>
                     <div className="card-body">
-                        <h5 class="card-title">Log In</h5>
+                        <h5 class="card-title">Sign Up</h5>
                         <FormikForm
                             initialValues={initialValues}
                             validationSchema={validationSchema}
-                            handleLogin={this.handleLogin}
+                            handleSignup={this.handleSignup}
                             loading={this.state.loading}
                         />
                     </div>
@@ -71,16 +61,15 @@ class Login extends React.Component {
 const mapStateToProps = (state) => {
     return {
         message: state.message.message,
-        isLoggedIn: state.auth.isLoggedIn
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        login: (username, password) => { dispatch(login({ username, password })) },
+        signup: (username, password, email) => { dispatch(signup({ username, password, email })) },
         clearMessage: () => { dispatch(clearMessage()) }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Login));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Signup));
 
