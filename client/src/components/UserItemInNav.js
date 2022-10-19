@@ -8,7 +8,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
 import { logout } from "../slices/auth.slice";
 import authService from "../services/auth/auth.service";
-import { withRoutes } from "../hooks/withRoutes";
+import withRoutes from "../hooks/withRoutes";
 
 import withErrorHandler from "../hooks/withErrorHandler";
 

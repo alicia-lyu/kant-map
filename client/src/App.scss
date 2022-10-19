@@ -1,4 +1,10 @@
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
 body #root {
     background-color: #696b7c;
-    color: #fff;
+}
+
+form > div {
+    @extend .mb-3
 }

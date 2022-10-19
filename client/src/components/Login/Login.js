@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card'
 import { login } from "../../slices/auth.slice";
 import { clearMessage } from "../../slices/message.slice";
 
-import withRouter from '../../hooks/withRoutes'
+import withRoutes from '../../hooks/withRoutes'
 
 import FormikForm from "./FormikForm";
 import DisplayMessage from "../common/DisplayMessage";
@@ -53,7 +53,7 @@ class Login extends React.Component {
             <div>
                 <Card>
                     <div className="card-body">
-                        <h5 class="card-title">Log In</h5>
+                        <h5 className="card-title">Log In</h5>
                         <FormikForm
                             initialValues={initialValues}
                             validationSchema={validationSchema}
@@ -82,5 +82,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Login));
+export default connect(mapStateToProps, mapDispatchToProps)(withRoutes(Login));
 

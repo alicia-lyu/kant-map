@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRoutes } from "../../hooks/withRoutes";
+import withRoutes from "../../hooks/withRoutes";
 import withParams from "../../hooks/withParams";
 import { clearMessage } from "../../slices/message.slice";
 import handleError from "../../hooks/useErrorHandler";

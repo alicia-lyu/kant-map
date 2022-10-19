@@ -8,7 +8,7 @@ import { processNode } from './processNode'
 import { configForce } from './configForce'
 import { getOption } from './getOption'
 import NetWrapper from './NetWrapper'
-import { withRoutes } from '../../hooks/withRoutes'
+import withRoutes from '../../hooks/withRoutes'
 import nameToUrl from '../../utils/nameToUrl'
 
 // might be better to change to a class component
