@@ -1,5 +1,5 @@
 export default function colorBadge(categoryIndex) {
-    classNameList = [
+    const classNameList = [
         'badge-category-0',
         'badge-category-1',
         'badge-category-2',

@@ -1,5 +1,5 @@
 export default function nameToUrl(name) {
-    name = name.toLowerCase();
-    nameArray = name.split(' ');
+    const nameLower = name.toLowerCase();
+    const nameArray = nameLower.split(' ');
     return nameArray.join('-')
 }

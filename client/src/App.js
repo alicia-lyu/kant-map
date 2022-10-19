@@ -13,23 +13,17 @@ import './App.scss';
 // import Components
 import Home from './components/Home/Home'
 import Terms from "./components/Terms/Terms";
-import Term from './components/Term'
+import Term from './components/Term/Term'
 import AddSentence from "./components/AddSentence/AddSentence";
-import { UserMenu, LogInPrompt } from "./App.UserItemInNav";
+import UserItemInNav from "./components/UserItemInNav";
 
 function App() {
 
-  // how to toggle between logged-in and logged-out states?
-  const NavRight = () => (
-    <Routes>
-      <Route element={<UserMenu />} />
-      <Route element={<LogInPrompt />} />
-    </Routes>
-  )
+
   // routes in the back-end to be added
   const NavbarWithLinks = () => (
     <Navbar bg="dark" variant="dark" expand="md">
-      <Container>
+      <Container className="container-fluid">
         <Navbar.Brand>
           <Link to={"/"} className="nav-link">
             KantMap
@@ -53,9 +47,9 @@ function App() {
                 Posts
               </Link>
             </Nav.Item>
-            <NavRight />
           </Nav>
         </Navbar.Collapse>
+        <UserItemInNav />
       </Container>
     </Navbar>
   )

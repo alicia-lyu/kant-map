@@ -8,7 +8,7 @@ const signup = (username, password, email) => {
 };
 
 const login = async (username, password) => {
-    res = await axios.post(BASE_URL_AUTH + '/login', { username, password });
+    const res = await axios.post(BASE_URL_AUTH + '/login', { username, password });
     if (res.data.accessToken) {
         localStorage.setItem('user', JSON.stringify(res.data));
     }

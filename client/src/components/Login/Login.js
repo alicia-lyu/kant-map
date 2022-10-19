@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card'
 import { login } from "../../slices/auth.slice";
 import { clearMessage } from "../../slices/message.slice";
 
-import withRouter from '../../hooks/withRouter'
+import withRouter from '../../hooks/withRoutes'
 
 import FormikForm from "./FormikForm";
 import DisplayMessage from "../common/DisplayMessage";

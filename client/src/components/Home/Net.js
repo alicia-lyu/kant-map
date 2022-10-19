@@ -8,7 +8,7 @@ import { processNode } from './processNode'
 import { configForce } from './configForce'
 import { getOption } from './getOption'
 import NetWrapper from './NetWrapper'
-import { withRouter } from '../../hooks/withRouter'
+import { withRoutes } from '../../hooks/withRoutes'
 import nameToUrl from '../../utils/nameToUrl'
 
 // might be better to change to a class component
@@ -53,4 +53,4 @@ function Net(props) {
   )
 }
 
-export default withRouter(Net); // wrap it up with router, make `props.router.navigate` valid
+export default withRoutes(Net); // wrap it up with router, make `props.router.navigate` valid
