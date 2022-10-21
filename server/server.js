@@ -35,8 +35,10 @@ app.use(methodOverride('_method'));
 // routes
 const termRoutes = require('./routes/term')
 const sentenceRoutes = require('./routes/sentence')
+const authRoutes = require("./routes/auth")
 app.use(termRoutes);
 app.use(sentenceRoutes);
+app.use(authRoutes);
 app.use((req, res) => {
   res.status(404).send('Not Found')
 })

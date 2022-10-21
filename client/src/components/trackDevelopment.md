@@ -14,6 +14,8 @@ AddSentence.js (authorized post)
 
 Sentence.js (authorized post)
 
+MySentences.js
+
 ## Components Necessary for Deployment
 
 Terms

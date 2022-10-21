@@ -5,6 +5,7 @@ const SentenceSchema = new Schema ({
     _id: Schema.Types.ObjectId,
     text: String,
     term: { type: Schema.Types.ObjectId, ref: 'terms'},
+    public: {type: Boolean, default: true},
     creator: {type: Schema.Types.ObjectId, ref: 'users'} // add a default value
 });
 

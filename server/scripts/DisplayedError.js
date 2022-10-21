@@ -1,7 +1,7 @@
 class DisplayedError {
     constructor(message) {
         this.display = true;
-        this.displayedMessage = message
+        this.message = message
     }
 }
 

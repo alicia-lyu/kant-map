@@ -2,6 +2,8 @@ const dbStack = require("../db")
 const Sentence = dbStack.sentenceModel;
 const Term = dbStack.termModel;
 const Mongoose = dbStack.mongoose;
+const DisplayedError = require('../scripts/DisplayedError');
+const isAdmin = require("../scripts/isAdmin");
 
 const matchTermSent = async (termName, sentenceId, errorMessage) => {
     const findTermSent = async () => {
@@ -19,42 +21,70 @@ const matchTermSent = async (termName, sentenceId, errorMessage) => {
     }
 }
 
+const handleError = (error) => {
+    if (error.display = true) {
+        res.send({message: error.message})
+    } else {
+        res.send(error)
+    }
+}
+
 const getSentences = async (req, res) => {
     const termName = req.params.termName;
+    const userId = req.userId;
     try {
         const termDocument = await Term.findOne({ name: termName });
-        const sentences = await Sentence.find({ term: term._id });
-        res.json({ termDocument, sentences })
+        let sentences
+        if (isAdmin(userId)) {
+            sentences = await Sentence.find({term: termDocument._id})
+        } else {
+            sentences = await Sentence.find({ 
+                term: termDocument._id, 
+                $or: [{public: true}, {creator: userId}] 
+            });
+        }
+        res.status(200).json({ termDocument, sentences })
     } catch (error) {
         res.send(error)
     }
+
+    
 }
 
 const findSentence = async (req, res) => {
     const termName = req.params.termName;
     const sentenceId = req.params.sentenceId;
+    const userId = req.userId;
     try {
         const { termDocument, sentenceDocument } = await matchTermSent(termName, sentenceId,
-            "Sentence request is not legitimate. Sentence ID and term name do not match.")
-        res.json({ termDocument, sentenceDocument })
+            "Sentence request is not legitimate. Sentence ID and term name do not match.");
+        if (sentenceDocument.public == false && sentenceDocument.creator == userId && !isAdmin(userId)) {
+            res.status(403).send("Unauthorized Entry.")
+        }
+        res.status(200).json({ termDocument, sentenceDocument })
     } catch (error) {
-        res.send(error)
+        handleError(error)
     }
 }
 
 const postSentence = async (req, res) => {
     const text = req.body.text;
     const termName = req.params.termName;
+    const userId = req.userId;
+    if (!userId) {
+        res.status(403).send("Unauthorized Entry.")
+    }
     try {
         const term = await Term.findOne({ name: termName });
         const sentenceDocument = new Sentence({
             _id: new Mongoose.Types.ObjectId(),
             text,
             term: term._id,
-            public: false
+            public: isAdmin(userId),
+            creator: userId
         });
         await sentenceDocument.save();
-        res.send({ message: 'success' })
+        res.status(200).send({ message: 'success' })
     } catch (error) {
         res.send({ message: 'failure' })
     }
@@ -63,13 +93,33 @@ const postSentence = async (req, res) => {
 const deleteSentence = async (req, res) => {
     const sentenceId = req.params.sentenceId;
     const termName = req.params.termName;
+    const userId = req.userId;
+    if (!userId) {
+        res.status(403).send("Unauthorized Entry.")
+    }
     try {
         const { sentenceDocument } = await matchTermSent(termName, sentenceId,
             "Sentence delete request is not legitimate. Sentence ID and term name do not match.")
+        if (sentenceDocument.creator !== userId && !isAdmin(userId)) {
+            res.status(403).send("Unauthorized Entry.")
+        }
         await sentenceDocument.remove()
-        res.send({ message: 'success' })
+        res.status(200).send({ message: 'success' })
     } catch (error) {
-        res.send({ message: 'failure' })
+        handleError(error)
+    }
+}
+
+const getMySentences = async (req, res) => {
+    const userId = req.userId;
+    if (!userId) {
+        res.status(403).send("Unauthorized Entry.")
+    }
+    try {
+        const sentences = await Sentence.find({creator: userId});
+        res.status(200).json(sentences)
+    } catch (error) {
+        handleError(error)
     }
 }
 
@@ -78,5 +128,6 @@ module.exports = {
     getSentences,
     findSentence,
     postSentence,
-    deleteSentence
+    deleteSentence,
+    getMySentences
 }
