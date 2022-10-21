@@ -1,15 +1,16 @@
-const mongoose = require('mongoose');
+const dbStack = require('../models');
+const mongoose = dbStack.mongoose;
 const connectMongoose = require('../conn');
-const Role = require('../models/Role')
+const Role = dbStack.roleModel;
 
-const roles = ['user', 'moderator', 'admin'];
+const ROLES = dbStack.ROLES;
 
 const handleError = (error) => {
     console.log(error)
 }
 
 const seedRoles = async () => {
-    for (let role of roles) {
+    for (let role of ROLES) {
         let roleDocument = new Role({
             name: role
         });
