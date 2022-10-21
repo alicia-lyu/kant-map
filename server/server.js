@@ -20,8 +20,12 @@ const sessionConfig = {
   saveUninitialized: true,
   secret,
 };
+
+const corsOptions = {
+  origin: "http://localhost:" + port
+};
 app.use(session(sessionConfig))
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(favicon(path.join(__dirname, 'assets/favicon.ico')));
 app.use(morgan('tiny'));
 app.use(express.urlencoded({ extended: true }));
