@@ -6,14 +6,12 @@ let verifyToken = (req, res, next) => {
     let token = req.headers["x-access-token"];
 
     if (!token) {
-        res.message = "No token provided!";
-        req.userId = null
+        return res.status(403).send({ message: "No token provided!" });
     }
 
     jwt.verify(token, config.secret, (err, decoded) => {
         if (err) {
-            res.message = "Unauthorized!";
-            req.userId = null
+            return res.status(401).send({ message: "Unauthorized!" });
         }
         req.userId = decoded.id;
         next();

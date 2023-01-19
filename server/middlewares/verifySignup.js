@@ -1,4 +1,4 @@
-const dbStack = require('../db/models')
+const dbStack = require('../db')
 const ROLES = dbStack.ROLES;
 const User = dbStack.userModel;
 

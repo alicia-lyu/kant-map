@@ -5,15 +5,18 @@ const Mongoose = dbStack.mongoose;
 const DisplayedError = require('../scripts/DisplayedError');
 const isAdmin = require("../scripts/isAdmin");
 
-const matchTermSent = async (termName, sentenceId, errorMessage) => {
+const matchTermSent = async (termName, sentenceId) => {
     const findTermSent = async () => {
         const termDocument = await Term.findOne({ name: termName });
         const sentenceDocument = await Sentence.findById(sentenceId);
         return { termDocument, sentenceDocument }
     }
     const { termDocument, sentenceDocument } = await findTermSent();
+    if (!termDocument || !sentenceDocument) {
+        throw new DisplayedError("Sentence request or term request is not legitimate.")
+    }
     if (sentenceDocument.term.toString() !== termDocument._id.toString()) {
-        throw new DisplayedError(errorMessage)
+        throw new DisplayedError("Sentence request is not legitimate. Sentence ID and term name do not match.")
     }
     return {
         termDocument,
@@ -21,7 +24,8 @@ const matchTermSent = async (termName, sentenceId, errorMessage) => {
     }
 }
 
-const handleError = (error) => {
+const handleError = (req, res, error) => {
+    console.log(error)
     if (error.display = true) {
         res.send({message: error.message})
     } else {
@@ -46,9 +50,7 @@ const getSentences = async (req, res) => {
         res.status(200).json({ termDocument, sentences })
     } catch (error) {
         res.send(error)
-    }
-
-    
+    }    
 }
 
 const findSentence = async (req, res) => {
@@ -56,14 +58,13 @@ const findSentence = async (req, res) => {
     const sentenceId = req.params.sentenceId;
     const userId = req.userId;
     try {
-        const { termDocument, sentenceDocument } = await matchTermSent(termName, sentenceId,
-            "Sentence request is not legitimate. Sentence ID and term name do not match.");
+        const { termDocument, sentenceDocument } = await matchTermSent(termName, sentenceId);
         if (sentenceDocument.public == false && sentenceDocument.creator == userId && !isAdmin(userId)) {
             res.status(403).send("Unauthorized Entry.")
         }
         res.status(200).json({ termDocument, sentenceDocument })
     } catch (error) {
-        handleError(error)
+        handleError(req, res, error)
     }
 }
 
@@ -98,15 +99,14 @@ const deleteSentence = async (req, res) => {
         res.status(403).send("Unauthorized Entry.")
     }
     try {
-        const { sentenceDocument } = await matchTermSent(termName, sentenceId,
-            "Sentence delete request is not legitimate. Sentence ID and term name do not match.")
+        const { sentenceDocument } = await matchTermSent(termName, sentenceId)
         if (sentenceDocument.creator !== userId && !isAdmin(userId)) {
             res.status(403).send("Unauthorized Entry.")
         }
         await sentenceDocument.remove()
         res.status(200).send({ message: 'success' })
     } catch (error) {
-        handleError(error)
+        handleError(req, res, error)
     }
 }
 
@@ -119,7 +119,7 @@ const getMySentences = async (req, res) => {
         const sentences = await Sentence.find({creator: userId});
         res.status(200).json(sentences)
     } catch (error) {
-        handleError(error)
+        handleError(req, res, error)
     }
 }
 

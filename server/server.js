@@ -31,12 +31,19 @@ app.use(morgan('tiny'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
+app.use((req, res, next) => {
+  res.header(
+      "Access-Control-Allow-Headers",
+      "x-access-token, Origin, Content-Type, Accept"
+  );
+  next();
+});
 
 // routes
-const termRoutes = require('./routes/term')
-const sentenceRoutes = require('./routes/sentence')
-const authRoutes = require("./routes/auth")
-const userRoutes = require("./routes/user")
+const termRoutes = require('./routes/term.route')
+const sentenceRoutes = require('./routes/sentence.route')
+const authRoutes = require("./routes/auth.route")
+const userRoutes = require("./routes/user.route")
 app.use(termRoutes);
 app.use(sentenceRoutes);
 app.use(authRoutes);
