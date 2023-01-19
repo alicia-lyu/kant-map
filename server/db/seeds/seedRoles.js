@@ -1,4 +1,4 @@
-const dbStack = require('../models');
+const dbStack = require('../index');
 const mongoose = dbStack.mongoose;
 const connectMongoose = require('../conn');
 const Role = dbStack.roleModel;

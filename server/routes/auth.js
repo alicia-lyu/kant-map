@@ -18,3 +18,5 @@ authRoutes.route("/auth/signup").post([
     controller.signup);
 
 authRoutes.route("/auth/login").post(controller.login);
+
+module.exports = authRoutes

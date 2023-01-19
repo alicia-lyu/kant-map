@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const connectMongoose = require('../conn');
+const dbStack = require('../index');
 const termsWithSentences = require('./termsWithSentences');
-const Term = require('../models/Term')
-const Sentence = require('../models/Sentence')
+const Term = dbStack.termModel
+const Sentence = dbStack.sentenceModel
 
 const handleError = (error) => {
     console.log(error)
