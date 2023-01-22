@@ -62,6 +62,12 @@ const signup = (req, res) => {
     });
 };
 
+// sample signup post request body: {
+//   "username": "sample",
+//   "email": "alicia.w.lyu@gmail.com",
+//   "password": "samplepass"
+// }
+
 const login = (req, res) => {
     User.findOne({
         username: req.body.username
@@ -108,7 +114,17 @@ const login = (req, res) => {
         });
 };
 
+const loginPage = (req, res) => {
+    res.status(200).send("Log In Page")
+}
+
+const signupPage = (req, res) => {
+    res.status(200).send("Sign Up Page")
+}
+
 module.exports = {
     signup,
-    login
+    login,
+    signupPage,
+    loginPage
 }

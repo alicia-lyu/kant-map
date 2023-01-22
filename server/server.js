@@ -44,10 +44,10 @@ const termRoutes = require('./routes/term.route')
 const sentenceRoutes = require('./routes/sentence.route')
 const authRoutes = require("./routes/auth.route")
 const userRoutes = require("./routes/user.route")
-app.use(termRoutes);
-app.use(sentenceRoutes);
 app.use(authRoutes);
 app.use(userRoutes);
+app.use(termRoutes);
+app.use(sentenceRoutes);
 app.use((req, res) => {
   res.status(404).send('Not Found')
 })
