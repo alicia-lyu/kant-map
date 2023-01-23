@@ -9,12 +9,12 @@ termRoutes.route('/').get((req, res) => {
 })
 termRoutes.route('/terms').get(controller.getTerm);
 
-termRoutes.route('/:termName').get((req, res) => {
+termRoutes.route('/term/:termName').get((req, res) => {
   const termName = req.params.termName
   res.redirect(`/${termName}/sentences`)
 });
 
-termRoutes.route('/term/:termName').get((req, res) => {
+termRoutes.route('/:termName').get((req, res) => {
   const termName = req.params.termName
   res.redirect(`/${termName}/sentences`)
 });

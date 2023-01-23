@@ -1,5 +1,5 @@
 import Card from 'react-bootstrap/Card'
-import { BrowserRouter as Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import nameToUrl from '../../utils/nameToUrl';
 
 export default function SentenceCard(props) {
@@ -9,9 +9,9 @@ export default function SentenceCard(props) {
     const sentenceIdField = sentence._id.toString();
     return (
         <Card>
-            <div class="card-body">
-                <p class="card-text">{props.sentence.text}</p>
-                <Link to={`/${termNameField}/${sentenceIdField}`} class="btn btn-dark">View</Link>
+            <div className="card-body">
+                <p className="card-text">{props.sentence.text}</p>
+                <Link to={`/${termNameField}/${sentenceIdField}`} className="btn btn-dark">View</Link>
             </div>
         </Card>
     )

@@ -1,4 +1,4 @@
-import { BrowserRouter as useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function withParams(Component) {
     function ComponentWithParams() {

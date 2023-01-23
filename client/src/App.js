@@ -18,6 +18,7 @@ import AddSentence from "./components/AddSentence/AddSentence";
 import UserItemInNav from "./components/UserItemInNav";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
+import Sentence from "./components/Sentence/Sentence"
 
 function App() {
 
@@ -62,10 +63,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/terms" element={<Terms />} />
-        <Route path="/:termName/sentences" element={<Term />} />
-        <Route path="/:termName/add-sentence" element={<AddSentence />} />
         <Route path="/auth/login" element={<Login />} />
         <Route path="/auth/signup" element={<Signup />} />
+        <Route path="/:termName/sentences" element={<Term />} />
+        <Route path="/:termName/add-sentence" element={<AddSentence />} />
+        <Route path="/:termName/:sentenceId" element={<Sentence />} />
       </Routes>
     </Container>
   )

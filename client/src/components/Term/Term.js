@@ -3,7 +3,7 @@ import withParams from "../../hooks/withParams";
 import sentenceService from "../../services/sentence.service";
 import SentenceCard from "./SentenceCard";
 import TermInfo from "../common/TermInfo";
-
+import { sample } from "./sample";
 
 class Term extends React.Component {
     constructor(props) {
@@ -15,13 +15,30 @@ class Term extends React.Component {
     }
 
     componentDidMount() { // connect react-router and axios
-        const res = sentenceService.getAll(this.props.params.termName);
-        const termDocument = res.termDocument;
-        const sentences = res.sentences;
-        this.setState({
-            term: termDocument,
-            sentences
-        })
+        const getData = async () => {
+            let termDocument, sentences
+            try {
+                const res = await sentenceService.getAll(this.props.params.termName);
+                const data = res.data
+                termDocument = data.termDocument
+                sentences = data.sentences
+            } catch (error) {
+                console.log(error)
+                termDocument = sample.sampleTermDoc;
+                sentences = sample.sampleSentences;
+                return {termDocument, sentences}
+            }
+            return {termDocument, sentences}
+        }
+        const receiveData = async () => {
+            const {termDocument, sentences} = await getData()
+            console.log(termDocument, sentences)
+            this.setState({
+                term: termDocument,
+                sentences
+            })
+        }
+        receiveData();
     }
 
     render() {
@@ -35,10 +52,12 @@ class Term extends React.Component {
             <div>
                 <TermInfo term={term}/>
                 <div id="sentenceCards">
-                    <SentenceCards />
+                    {SentenceCards}
                 </div>
             </div>
         )
+
+        // First render (but the render result is invisible), then call componentDidMount. Make sure the initial state before ComponentDidMount isn't causing any mistake.
     }
 }
 

@@ -22,7 +22,8 @@ const sessionConfig = {
 };
 
 const corsOptions = {
-  origin: "http://localhost:" + port
+  origin: "http://localhost:" + port,
+  credentials: true
 };
 app.use(session(sessionConfig))
 app.use(cors(corsOptions));
@@ -32,6 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
 app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.header(
       "Access-Control-Allow-Headers",
       "x-access-token, Origin, Content-Type, Accept"

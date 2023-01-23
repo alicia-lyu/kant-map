@@ -6,4 +6,4 @@ ATLAS_URL
 
 ## In routes and controllers
 
-Authorization logic for sentences
+lists & posts controllers and routes

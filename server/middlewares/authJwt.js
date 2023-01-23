@@ -22,17 +22,19 @@ let decodeToken = (req, res, next) => {
   let token = req.headers["x-access-token"];
 
   if (!token) {
-    req.userId = null
+    req.userId = null;
+    return next();
   }
 
   jwt.verify(token, config.secret, (err, decoded) => {
     if (err) {
-      req.userId = null
+      req.userId = null;
+      return next();
     }
     req.userId = decoded.id;
+    next();
   });
 
-  next();
 };
 
 let isAdmin = (req, res, next) => {
